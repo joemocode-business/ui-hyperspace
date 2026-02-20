@@ -1,0 +1,30 @@
+:root,
+.light-section {
+  --color-cta-link-text: theme('colors.zinc.600');
+}
+
+.dark-section {
+  --color-cta-link-text: theme('colors.zinc.300');
+}
+
+@layer components {
+  .cta-link {
+    @apply font-semibold text-(--color-cta-link-text);
+  }
+
+  .text-link {
+    @apply focus:brand-outline underline;
+
+    .light-section &:hover {
+      @apply text-brand-800;
+    }
+
+    .dark-section &:hover {
+      @apply text-zinc-300;
+    }
+  }
+
+  footer .text-link {
+    @apply no-underline hover:underline;
+  }
+}
