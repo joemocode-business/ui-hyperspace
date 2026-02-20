@@ -22,6 +22,7 @@ const variantClasses = {
   primary: 'button--primary',
   ghost: 'button--ghost',
   tertiary: 'button--tertiary',
+  filled: 'button--filled',
 } as const
 
 export function Button({
