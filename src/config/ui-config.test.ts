@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, jest } from '@jest/globals'
+import { describe, it, expect, beforeEach, vi } from 'vitest'
 
 import { setUIConfig, getUIConfig, resetUIConfig } from './ui-config'
 
@@ -12,7 +12,7 @@ describe('ui-config', () => {
   })
 
   it('returns config after initialization', () => {
-    const mockLink = jest.fn(() => null)
+    const mockLink = vi.fn(() => null)
 
     setUIConfig({
       baseDomain: 'https://test.com',
@@ -25,7 +25,7 @@ describe('ui-config', () => {
   })
 
   it('returns same config instance on multiple calls (cache)', () => {
-    const mockLink = jest.fn(() => null)
+    const mockLink = vi.fn(() => null)
 
     setUIConfig({
       baseDomain: 'https://test.com',
@@ -39,8 +39,8 @@ describe('ui-config', () => {
   })
 
   it('warns on duplicate initialization', () => {
-    const consoleSpy = jest.spyOn(console, 'warn').mockImplementation(() => {})
-    const mockLink = jest.fn(() => null)
+    const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
+    const mockLink = vi.fn(() => null)
 
     setUIConfig({ baseDomain: 'https://test.com', Link: mockLink })
     setUIConfig({ baseDomain: 'https://other.com', Link: mockLink })
