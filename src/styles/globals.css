@@ -6,8 +6,9 @@
 @import './icon-button.css';
 @import './listbox.css';
 @import './logo-section.css';
-@import './navigation.css';
 @import './modal.css';
+@import './navigation.css';
+@import './pagination.css';
 @import './slide-over.css';
 @import './state-card.css';
 @import './table.css';

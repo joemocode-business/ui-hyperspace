@@ -1,5 +1,48 @@
 # @filecoin-foundation/ui-filecoin
 
+## 0.8.4
+
+### Patch Changes
+
+- 62144b5: Fix dropdown navigation spacing when there's only 1 link
+
+## 0.8.3
+
+### Patch Changes
+
+- 38c19f1: Fix self-referential imports in `RefreshButton` to use relative paths
+
+## 0.8.2
+
+### Patch Changes
+
+- a9473cf: Add play/pause button to LogoSection
+- 2311c34: Add button size prop
+
+## 0.8.1
+
+### Patch Changes
+
+- 37af656: Add optional placeholder prop to SearchInput and Search components
+- 5c9769e: Rework Pagination
+
+## 0.8.0
+
+### Minor Changes
+
+- 2b1532c: Add YouTubeVideo component
+- 1b2ff8c: Add textTransform prop to Badge component with support for 'uppercase', 'capitalize', and 'none' options
+
+### Patch Changes
+
+- 24401b7: Extract onNavigate callback to NavigationMainLink for internal links only
+
+## 0.7.6
+
+### Patch Changes
+
+- ba3fa25: Improve src validation for MarkdownImage
+
 ## 0.7.5
 
 ### Patch Changes

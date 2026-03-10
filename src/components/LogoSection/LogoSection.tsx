@@ -1,9 +1,10 @@
 import { type HeadingProps } from '../Heading'
 
 import { Carousel } from './Carousel/Carousel'
+import { CarouselAutoScrollControls } from './Carousel/CarouselAutoScrollControls'
 import { CarouselContent } from './Carousel/CarouselContent'
+import type { CarouselGradientProps } from './Carousel/CarouselGradient'
 import { CarouselItem } from './Carousel/CarouselItem'
-import { ConditionalCarouselNavigation } from './Carousel/CarouselNavigation'
 import { type LogoItemProps, LogoItem } from './LogoItem'
 
 type LogoSectionProps = {
@@ -11,6 +12,7 @@ type LogoSectionProps = {
   title: string
   logos: Array<LogoItemProps>
   autoPlay?: boolean
+  gradientMode?: CarouselGradientProps['variant']
 }
 
 export function LogoSection({
@@ -18,6 +20,7 @@ export function LogoSection({
   title,
   logos,
   autoPlay,
+  gradientMode,
 }: LogoSectionProps) {
   const Tag = headingTag
 
@@ -34,7 +37,7 @@ export function LogoSection({
       </Tag>
 
       <Carousel autoPlay={autoPlay}>
-        <CarouselContent>
+        <CarouselContent gradientMode={gradientMode}>
           {logos.map((logoItem, index) => (
             <CarouselItem key={index} range={logos.length}>
               <div className="grid h-full place-items-center p-0.5">
@@ -43,7 +46,7 @@ export function LogoSection({
             </CarouselItem>
           ))}
         </CarouselContent>
-        <ConditionalCarouselNavigation />
+        <CarouselAutoScrollControls />
       </Carousel>
     </section>
   )
