@@ -8,7 +8,7 @@ export type ProgressBarProps = {
 }
 
 const sizeClasses = {
-  sm: 'h-1',
+  sm: 'h-1.5',
   md: 'h-2',
 } as const
 
@@ -29,13 +29,13 @@ export function ProgressBar({
       aria-valuemax={100}
       aria-label={label}
       className={clsx(
-        'w-full overflow-hidden rounded-full bg-zinc-200',
+        'w-full overflow-hidden rounded-full bg-[#f3f4f6]',
         sizeClasses[size],
         className,
       )}
     >
       <div
-        className="h-full rounded-full bg-brand-600 transition-all duration-300"
+        className="h-full rounded-full bg-[#0080ff] transition-all duration-300"
         style={{ width: `${clamped}%` }}
       />
     </div>

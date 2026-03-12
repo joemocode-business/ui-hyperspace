@@ -1,10 +1,15 @@
 import { clsx } from 'clsx'
+import { ProgressBar } from './ProgressBar'
 
 export type StatCardProps = {
   label: string
   value: string
   limit?: string
   usage?: string
+  /** 0-100. When provided, renders a ProgressBar below the value. */
+  progress?: number
+  /** "lg" for prominent cards (Storage/Downloads), default for compact cards */
+  size?: 'lg'
   className?: string
 }
 
@@ -13,32 +18,58 @@ export function StatCard({
   value,
   limit,
   usage,
+  progress,
+  size,
   className,
 }: StatCardProps) {
+  const isLarge = size === 'lg'
+
   return (
     <div
       className={clsx(
-        'relative rounded-lg border border-(--color-border-base) bg-white p-5',
+        'relative rounded-xl border border-[#e1e4ea] bg-white',
+        isLarge ? 'p-6' : 'px-[17px] pb-[17px] pt-[22px]',
         className,
       )}
     >
-      {/* Top row: label + usage */}
-      <div className="mb-3 flex items-start justify-between gap-2">
-        <span className="text-xs font-medium uppercase tracking-wider text-zinc-500">
+      <div className={clsx('flex items-start justify-between gap-2', isLarge ? 'mb-4' : 'mb-2.5')}>
+        <span
+          className={clsx(
+            'font-medium uppercase tracking-wider text-[#677183]',
+            isLarge ? 'text-xs' : 'text-[11px]',
+          )}
+        >
           {label}
         </span>
         {usage && (
-          <span className="shrink-0 text-xs text-zinc-400">{usage}</span>
+          <span className="shrink-0 text-[11px] text-[#677183]">{usage}</span>
         )}
       </div>
 
-      {/* Value + optional limit */}
-      <div className="flex items-baseline gap-1.5">
-        <span className="text-3xl font-semibold text-zinc-950">{value}</span>
+      <div className={clsx('flex items-baseline', isLarge ? 'gap-1.5' : 'gap-1')}>
+        <span
+          className={clsx(
+            'font-semibold text-[#14181f]',
+            isLarge ? 'text-[30px] leading-9 tracking-tight' : 'text-xl',
+          )}
+        >
+          {value}
+        </span>
         {limit && (
-          <span className="text-base text-zinc-400">{limit}</span>
+          <span
+            className={clsx(
+              'text-[#677183]',
+              isLarge ? 'text-[13px]' : 'text-[11px]',
+            )}
+          >
+            {limit}
+          </span>
         )}
       </div>
+
+      {progress !== undefined && (
+        <ProgressBar value={progress} size="sm" className="mt-4" label={`${label} usage`} />
+      )}
     </div>
   )
 }
